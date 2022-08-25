@@ -84,14 +84,14 @@ namespace WebOrigoTask.Controllers
             }
         }
 
-        [HttpGet("/device/info/getAll")]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<List<Data.DeviceRegisterRequest>> GetTabletsAsync()
-        {
-            using (var db = new ApplicationDBContext())
-            {
-                return await db.Devices.ToListAsync();
-            }
-        }
+        //[HttpGet("/device/info/getAll")]
+        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        //public async Task<List<Data.DeviceRegisterRequest>> GetTabletsAsync()
+        //{
+        //    using (var db = new ApplicationDBContext())
+        //    {
+        //        return await db.Devices.ToListAsync();
+        //    }
+        //}
     }
 }

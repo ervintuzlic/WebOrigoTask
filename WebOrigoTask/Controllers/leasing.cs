@@ -33,7 +33,9 @@ namespace WebOrigoTask.Controllers
         /// <response code="201">Successful registration</response>
         /// <response code="400">Bad request</response>
         [HttpPost("/leasing/update/{id}")]
-        public async Task<bool> UpdateDevicesAsync(LeasingUpdateRequest deviceToUpdate, string id, string ContentType, string XAPIKEY, string appversion)
+        [ProducesResponseType(typeof(List<LeasingUpdateResponse>), 200)]
+        [ProducesResponseType(typeof(List<LeasingUpdateResponseError>), 400)]
+        public async Task<bool> UpdateDevicesAsync([BindRequired] LeasingUpdateRequest deviceToUpdate, [BindRequired][FromRoute] string id, [BindRequired][FromHeader] string ContentType, [BindRequired][FromHeader] string XAPIKEY, [BindRequired][FromHeader] string appversion)
         {
             using (var db = new ApplicationDBContext())
             {

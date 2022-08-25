@@ -8,7 +8,7 @@ namespace WebOrigoTask
         /// Device ID
         /// </summary>
         /// <example>NW-H-20-0017</example>
-        []
+        [Key]
         public string deviceId { get; set; }
 
         /// <summary>
