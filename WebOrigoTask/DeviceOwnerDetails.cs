@@ -2,16 +2,34 @@
 {
     public sealed class DeviceOwnerDetails
     {
-        public string billing_name { get; set; }
+        /// <summary>
+        /// Owner name
+        /// </summary>
+        public string billing_name { get; set; } = string.Empty;
 
-        public string adress_country { get; set; }
+        /// <summary>
+        /// Address country
+        /// </summary>
+        public string adress_country { get; set; } = string.Empty;
 
-        public string address_zip { get; set; }
+        /// <summary>
+        /// ZIP
+        /// </summary>
+        public string address_zip { get; set; } = string.Empty;
 
-        public string address_city { get; set; }
+        /// <summary>
+        /// City
+        /// </summary>
+        public string address_city { get; set; } = string.Empty;
 
-        public string address_street { get; set; }
+        /// <summary>
+        /// Address street
+        /// </summary>
+        public string address_street { get; set; } = string.Empty;
 
-        public string vat_number { get; set; }
+        /// <summary>
+        /// VAT number
+        /// </summary>
+        public string vat_number { get; set; } = string.Empty;
     }
 }

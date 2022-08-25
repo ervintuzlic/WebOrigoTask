@@ -15,12 +15,12 @@ namespace WebOrigoTask
         /// DeviceType
         /// </summary>
         [SwaggerIgnoreProperty]
-        public string deviceType { get; set; }
+        public string deviceType { get; set; } = string.Empty;
 
         /// <summary>
         /// Device Owner
         /// </summary>
-        public string deviceOwner { get; set; }
+        public string deviceOwner { get; set; } = string.Empty;
 
         /// <summary>
         /// Device Owner Details
@@ -31,7 +31,7 @@ namespace WebOrigoTask
         /// <summary>
         /// Date of registration
         /// </summary>
-        public string dateOfRegistration { get; set; }
+        public string dateOfRegistration { get; set; } = string.Empty;
 
         /// <summary>
         /// Leasing period computed
@@ -46,6 +46,6 @@ namespace WebOrigoTask
         /// <summary>
         /// Timestamp
         /// </summary>
-        public string timestamp { get; set; }
+        public string timestamp { get; set; } = string.Empty;
     }
 }
