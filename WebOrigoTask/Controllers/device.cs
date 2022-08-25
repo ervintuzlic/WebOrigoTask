@@ -49,7 +49,7 @@ namespace WebOrigoTask.Controllers
                     t.accept = Accept;
                     t.appVersion = appVersion;
 
-                    await db.Tablets.AddAsync(t);
+                    await db.Devices.AddAsync(t);
 
                     return await db.SaveChangesAsync() >= 1;
                 }
@@ -62,13 +62,13 @@ namespace WebOrigoTask.Controllers
 
         [HttpGet("/device/info/{id}")]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<Data.device> GetTabletById(string id)
+        public async Task<Data.device> GetTabletById([BindRequired] string id, [BindRequired][FromHeader] string ContentType, [BindRequired][FromHeader] string Accept, [BindRequired][FromHeader] string XAPIKEY, [BindRequired][FromHeader] string appVersion)
         {
             using (var db = new ApplicationDBContext())
             {
                 try
                 {
-                    return await db.Tablets.FirstOrDefaultAsync(tablet => tablet.deviceId == id);
+                    return await db.Devices.FirstOrDefaultAsync(tablet => tablet.deviceId == id);
                 }
                 catch (Exception ex)
                 {
@@ -83,7 +83,7 @@ namespace WebOrigoTask.Controllers
         {
             using (var db = new ApplicationDBContext())
             {
-                return await db.Tablets.ToListAsync();
+                return await db.Devices.ToListAsync();
             }
         }
     }

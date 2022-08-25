@@ -11,6 +11,7 @@ namespace WebOrigoTask.Data
         /// <summary>
         /// Device ID
         /// </summary>
+        /// <example>NW-H-20-0017</example>
         [Key]
         [Required]
         public string deviceId { get; set; }
@@ -18,22 +19,20 @@ namespace WebOrigoTask.Data
         /// <summary>
         /// DeviceType
         /// </summary>
-        [Required]
         [SwaggerIgnoreProperty]
         public string deviceType { get; set; } = "unset";
 
         /// <summary>
         /// ActivationCode
         /// </summary>
+        /// /// <example>XB67FGC2561XDFG2</example>
         [MaxLength(16)]
-        [Required]
         public string activationCode { get; set; } = string.Empty;
 
         /// <summary>
         /// Accept
         /// </summary>
 
-        [Required]
         [SwaggerIgnoreProperty]
         public string accept { get; set; } = string.Empty;
 
@@ -41,7 +40,6 @@ namespace WebOrigoTask.Data
         /// appVersion
         /// </summary>
 
-        [Required]
         [SwaggerIgnoreProperty]
         public string appVersion { get; set; } = string.Empty;
     }

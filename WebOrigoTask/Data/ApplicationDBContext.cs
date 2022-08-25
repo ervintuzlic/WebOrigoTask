@@ -4,7 +4,7 @@ namespace WebOrigoTask.Data
 {
     public class ApplicationDBContext : DbContext
     {
-        public DbSet<device> Tablets { get; set; }
+        public DbSet<device> Devices { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder) => dbContextOptionsBuilder.UseSqlite("Data Source=./Data/Manager_Portal.db");
 
