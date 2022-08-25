@@ -7,6 +7,15 @@ namespace WebOrigoTask.Data
         public DbSet<DeviceRegisterRequest> Devices { get; set; }
         public DbSet<DeviceInfoResponse> deviceInfoResponses { get; set; }
 
+        public DbSet<DeviceOwnerDetails> DeviceOwnerDetails { get; set; }
+
+        public DbSet<LeasingPeriods> LeasingPeriods { get; set; }
+
+        public DbSet<LeasingPeriodsComputed> LeasingPeriodsComputeds { get; set; }
+
+        public DbSet<ErrorResponse> errorResponses { get; set; }
+
+        public DbSet<LeasingUpdateRequest> leasingUpdateRequests { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder) => dbContextOptionsBuilder.UseSqlite("Data Source=./Data/Manager_Portal.db");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

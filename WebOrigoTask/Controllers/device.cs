@@ -32,8 +32,8 @@ namespace WebOrigoTask.Controllers
         /// <response code="201">Successful registration</response>
         /// <response code="400">Bad request</response>
         [HttpPost("/device/register")]
-        [SwaggerResponse(201, "Successful registration")]
-        [SwaggerResponse(400, "Bad request")]
+        [ProducesResponseType(typeof(List<Data.DeviceRegisterRequest>), 201)]
+        [ProducesResponseType(typeof(List<ErrorResponse>), 400)]
         public async Task<bool> CreateDeviceAsync([BindRequired] Data.DeviceRegisterRequest t, [BindRequired][FromHeader] string ContentType, [BindRequired][FromHeader] string Accept, [BindRequired][FromHeader] string appVersion)
         {
             using (var db = new ApplicationDBContext())
@@ -67,7 +67,8 @@ namespace WebOrigoTask.Controllers
         /// <response code="200">Device information</response>
         /// <response code="400">Bad request</response>
         [HttpGet("/device/info/{id}")]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(List<DeviceInfoResponse>), 200)]
+        [ProducesResponseType(typeof(List<ErrorResponse>), 400)]
         public async Task<Data.DeviceRegisterRequest> GetTabletById([BindRequired] string id, [BindRequired][FromHeader] string ContentType, [BindRequired][FromHeader] string Accept, [BindRequired][FromHeader] string XAPIKEY, [BindRequired][FromHeader] string appVersion)
         {
             using (var db = new ApplicationDBContext())
