@@ -4,16 +4,16 @@ namespace WebOrigoTask.Data
 {
     public class ApplicationDBContext : DbContext
     {
-        public DbSet<device> Devices { get; set; }
+        public DbSet<DeviceRegisterRequest> Devices { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder) => dbContextOptionsBuilder.UseSqlite("Data Source=./Data/Manager_Portal.db");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            device[] devicesToSeed = new device[6];
+            DeviceRegisterRequest[] devicesToSeed = new DeviceRegisterRequest[6];
             for (int i = 1; i <= 6; i++)
             {
-                devicesToSeed[i - 1] = new device
+                devicesToSeed[i - 1] = new DeviceRegisterRequest
                 {
                     deviceId = "NW-H-20-0017",
                     deviceType = "unset",
@@ -21,9 +21,9 @@ namespace WebOrigoTask.Data
                 };
             }
 
-            modelBuilder.Entity<device>().HasData(new[]
+            modelBuilder.Entity<DeviceRegisterRequest>().HasData(new[]
             {
-                    new device
+                    new DeviceRegisterRequest
                     {
                         deviceId = "NW-H-20-0017",
                         deviceType = "unset",

@@ -34,7 +34,7 @@ namespace WebOrigoTask.Controllers
         [HttpPost("/device/register")]
         [SwaggerResponse(201, "Successful registration")]
         [SwaggerResponse(400, "Bad request")]
-        public async Task<bool> CreateDeviceAsync([BindRequired] Data.device t, [BindRequired][FromHeader] string ContentType, [BindRequired][FromHeader] string Accept, [BindRequired][FromHeader] string appVersion)
+        public async Task<bool> CreateDeviceAsync([BindRequired] Data.DeviceRegisterRequest t, [BindRequired][FromHeader] string ContentType, [BindRequired][FromHeader] string Accept, [BindRequired][FromHeader] string appVersion)
         {
             using (var db = new ApplicationDBContext())
             {
@@ -60,9 +60,15 @@ namespace WebOrigoTask.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Retrieve device information
+        /// </summary>
+        /// <response code="200">Device information</response>
+        /// <response code="400">Bad request</response>
         [HttpGet("/device/info/{id}")]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<Data.device> GetTabletById([BindRequired] string id, [BindRequired][FromHeader] string ContentType, [BindRequired][FromHeader] string Accept, [BindRequired][FromHeader] string XAPIKEY, [BindRequired][FromHeader] string appVersion)
+        public async Task<Data.DeviceRegisterRequest> GetTabletById([BindRequired] string id, [BindRequired][FromHeader] string ContentType, [BindRequired][FromHeader] string Accept, [BindRequired][FromHeader] string XAPIKEY, [BindRequired][FromHeader] string appVersion)
         {
             using (var db = new ApplicationDBContext())
             {
@@ -79,7 +85,7 @@ namespace WebOrigoTask.Controllers
 
         [HttpGet("/device/info/getAll")]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<List<Data.device>> GetTabletsAsync()
+        public async Task<List<Data.DeviceRegisterRequest>> GetTabletsAsync()
         {
             using (var db = new ApplicationDBContext())
             {

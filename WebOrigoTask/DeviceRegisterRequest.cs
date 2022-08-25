@@ -6,7 +6,7 @@ namespace WebOrigoTask.Data
     /// <summary>
     /// Endpoints related to device management
     /// </summary>
-    public class device
+    public class DeviceRegisterRequest
     {
         /// <summary>
         /// Device ID
