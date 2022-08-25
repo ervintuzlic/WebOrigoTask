@@ -6,22 +6,30 @@ namespace WebOrigoTask.Data
     {
         public DbSet<device> Tablets { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder) => dbContextOptionsBuilder.UseSqlite("Data Source=./Data/ManagerPortal.db");
+        protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder) => dbContextOptionsBuilder.UseSqlite("Data Source=./Data/Manager_Portal.db");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            device[] tabletsToSeed = new device[6];
+            device[] devicesToSeed = new device[6];
             for (int i = 1; i <= 6; i++)
             {
-                tabletsToSeed[i - 1] = new device
+                devicesToSeed[i - 1] = new device
                 {
-                    device_id = i,
-                    device_type = "unset",
-                    activation_code = "XJ235IAH245D2O"
+                    deviceId = "NW-H-20-0017",
+                    deviceType = "unset",
+                    activationCode = "XJ235IAH245D2O"
                 };
             }
 
-            modelBuilder.Entity<device>().HasData(tabletsToSeed);
+            modelBuilder.Entity<device>().HasData(new[]
+            {
+                    new device
+                    {
+                        deviceId = "NW-H-20-0017",
+                        deviceType = "unset",
+                        activationCode = "XJ235IAH245D2O"
+                    }
+            });
         }
     }
 }

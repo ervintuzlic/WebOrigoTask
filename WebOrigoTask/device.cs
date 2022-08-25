@@ -13,21 +13,21 @@ namespace WebOrigoTask.Data
         /// </summary>
         [Key]
         [Required]
-        public int device_id { get; set; }
+        public string deviceId { get; set; }
 
         /// <summary>
         /// DeviceType
         /// </summary>
         [Required]
         [SwaggerIgnoreProperty]
-        public string device_type { get; set; } = "unset";
+        public string deviceType { get; set; } = "unset";
 
         /// <summary>
         /// ActivationCode
         /// </summary>
         [MaxLength(16)]
         [Required]
-        public string activation_code { get; set; } = string.Empty;
+        public string activationCode { get; set; } = string.Empty;
 
         /// <summary>
         /// Accept
@@ -43,6 +43,6 @@ namespace WebOrigoTask.Data
 
         [Required]
         [SwaggerIgnoreProperty]
-        public string appversion { get; set; } = string.Empty;
+        public string appVersion { get; set; } = string.Empty;
     }
 }

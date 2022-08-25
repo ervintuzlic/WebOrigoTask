@@ -26,41 +26,6 @@ namespace WebOrigoTask.Controllers
             _logger = logger;
         }
 
-        ///// <summary>
-        ///// Register device
-        ///// </summary>
-        ///// <response code="201">Successful registration</response>
-        ///// <response code="400">Bad request</response>
-        //[HttpPost("/device/register")]
-        //[SwaggerResponse(201, "Successful registration")]
-        //[SwaggerResponse(400, "Bad request")]
-        //public async Task<bool> CreateDeviceAsync([BindRequired][FromHeader] string ContentType, [BindRequired][FromHeader] string Accept, [BindRequired][FromHeader] string appVersion, Data.device t)
-        //{
-        //    using (var db = new ApplicationDBContext())
-        //    {
-        //        try
-        //        {
-        //            if (t.activation_code == String.Empty)
-        //                t.device_type = "free";
-
-        //            else 
-        //                t.device_type = ContentType;
-
-        //            t.accept = Accept;
-        //            t.appversion = appVersion;
-
-        //            await db.Tablets.AddAsync(t);
-
-        //            return await db.SaveChangesAsync() >= 1;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //}
-
-
         /// <summary>
         /// Register device
         /// </summary>
@@ -75,14 +40,14 @@ namespace WebOrigoTask.Controllers
             {
                 try
                 {
-                    if (t.activation_code == String.Empty)
-                        t.device_type = "free";
+                    if (t.activationCode == String.Empty)
+                        t.deviceType = "free";
 
                     else
-                        t.device_type = ContentType;
+                        t.deviceType = ContentType;
 
                     t.accept = Accept;
-                    t.appversion = appVersion;
+                    t.appVersion = appVersion;
 
                     await db.Tablets.AddAsync(t);
 
@@ -97,13 +62,13 @@ namespace WebOrigoTask.Controllers
 
         [HttpGet("/device/info/{id}")]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<Data.device> GetTabletById(int id)
+        public async Task<Data.device> GetTabletById(string id)
         {
             using (var db = new ApplicationDBContext())
             {
                 try
                 {
-                    return await db.Tablets.FirstOrDefaultAsync(tablet => tablet.device_id == id);
+                    return await db.Tablets.FirstOrDefaultAsync(tablet => tablet.deviceId == id);
                 }
                 catch (Exception ex)
                 {
